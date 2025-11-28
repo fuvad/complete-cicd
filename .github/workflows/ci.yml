@@ -28,7 +28,7 @@ jobs:
         
     - name: Run pylint
       run: |
-        pylint train.py test_train.py || True
+        pylint train.py test_train.py || true
         
     - name: Test with pytest
       run: |
