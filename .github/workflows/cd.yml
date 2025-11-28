@@ -29,9 +29,6 @@ jobs:
     - name: Train model
       run: |
         python train.py
-
-    - name: Verify gcloud authentication
-      run: gcloud auth list
         
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
@@ -49,5 +46,5 @@ jobs:
         gcloud run deploy ml-model-api \
           --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/ml-model-api \
           --region ${{ secrets.GCP_REGION }} \
-          --platform managed
+          --platform managed \
           --allow-unauthenticated
