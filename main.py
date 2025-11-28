@@ -9,7 +9,7 @@ model = joblib.load("model.pkl")
 app = FastAPI()
 
 class InputData(BaseModel):
-    features: List[float]
+    instances: List[float]
 
 @app.get("/status")
 def status():
@@ -17,6 +17,6 @@ def status():
 
 @app.post("/predict")
 def predict(data: InputData):
-    x = np.array(data.features).reshape(1, -1)
+    x = np.array(data.instances).reshape(1, -1)
     pred = model.predict(x).tolist()
     return {"prediction": pred}
